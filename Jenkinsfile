@@ -1,37 +1,16 @@
-pipeline {
-  agent any
-  stages {
+node {
+    def app
     stage('Clone repository') {
-      steps {
         checkout scm
-      }
     }
-
     stage('Build image') {
-      steps {
-        script {
-          docker.build(DOCKER_IMAGE)
-        }
-
-      }
+       app = docker.build("navipro/kiii")
     }
-
-    stage('Push image') {
-      steps {
-        script {
-          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            dockerImage = docker.image(DOCKER_IMAGE)
-            dockerImage.push("${env.BRANCH_NAME}-${env.BUILD_NUMBER}")
-            dockerImage.push("${env.BRANCH_NAME}-latest")
+    stage('Push image') {   
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BRANCH_NAME}-${env.BUILD_NUMBER}")
+            app.push("${env.BRANCH_NAME}-latest")
             // signal the orchestrator that there is a new version
-          }
         }
-
-      }
     }
-
-  }
-  environment {
-    DOCKER_IMAGE = 'navipro/kiii'
-  }
 }
