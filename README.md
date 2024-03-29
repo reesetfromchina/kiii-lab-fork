@@ -1,6 +1,6 @@
-# KIII Lab - Continuous Integration and Delivery
+# KIII Homework - Continuous Integration and Delivery
 
-Welcome to the KIII Lab repository for the college course on Continuous Integration and Delivery (DEVOPS). This repository serves as a central hub for course materials, assignments, and collaborative work related to implementing CI/CD practices.
+Welcome to the KIII Homework repository for the college course on Continuous Integration and Delivery (DEVOPS). This repository serves as a central hub for course materials, assignments, and collaborative work related to implementing CI/CD practices.
 
 ## Course Overview:
 This college course focuses on the principles and practices of Continuous Integration and Delivery in the context of DevOps. Throughout the semester, students will explore tools, methodologies, and best practices essential for streamlining the software development lifecycle.
